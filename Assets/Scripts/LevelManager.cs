@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomeScript : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    public static HomeScript main;
+    public static LevelManager main;
 
     public Transform[] path;
     public Transform startPoint;
