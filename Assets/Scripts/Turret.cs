@@ -7,6 +7,8 @@ using Unity.Mathematics;
 
 public class Turret : MonoBehaviour
 {
+    
+
     [Header("References")]
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
@@ -21,6 +23,7 @@ public class Turret : MonoBehaviour
     private Transform target;
     private float timeUntilFire;
 
+    
     private void Update()
     {
         if (target == null)
@@ -30,15 +33,10 @@ public class Turret : MonoBehaviour
         }
         RotateTowardsTarget();
 
-        if (!CheckTargetIsInRange())
-        {
-            target = null;
-        } 
-        else
+        if (target != null)
         {
             timeUntilFire += Time.deltaTime;
-
-            if(timeUntilFire >= 1f / bps)
+            if(timeUntilFire >= bps)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -47,11 +45,11 @@ public class Turret : MonoBehaviour
     
     }
 
-    private void Shoot()
+    public void Shoot()
     {
-        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, quaternion.identity);
-        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-        bulletScript.SetTarget(target);
+       GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+       Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+       bulletScript.SetTarget(target);        
     }
     private void FindTarget()
     {

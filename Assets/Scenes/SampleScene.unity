@@ -9329,6 +9329,10 @@ PrefabInstance:
       value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 5626344967767975973, guid: 20aeeb14a8ab179489866e22d3f7cf75, type: 3}
+      propertyPath: bps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626344967767975973, guid: 20aeeb14a8ab179489866e22d3f7cf75, type: 3}
       propertyPath: firingPoint
       value: 
       objectReference: {fileID: 106767562}
@@ -9336,6 +9340,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 5223129265623784893, guid: eb328842cea9d904db9aa8f8793c0540, type: 3}
+    - target: {fileID: 5626344967767975973, guid: 20aeeb14a8ab179489866e22d3f7cf75, type: 3}
+      propertyPath: rotationSpeed
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

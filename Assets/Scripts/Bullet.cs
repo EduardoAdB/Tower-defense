@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,14 +15,14 @@ public class Bullet : MonoBehaviour
 
     public void SetTarget(Transform _target)
     {
-        target = _target;
+        target = _target;   
     }
     private void FixedUpdate()
     {
         if (!target) return;
-        Vector2 direction = (target.position - transform.position).normalized;
+        transform.up= (target.position - transform.position);
 
-        rb.velocity = direction * bulletSpeed;
+        rb.velocity = transform.up * bulletSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
