@@ -7,12 +7,14 @@ using Unity.Mathematics;
 
 public class Turret : MonoBehaviour
 {
-    
+    #region singleton
+    public static Turret main;
+    #endregion
 
     [Header("References")]
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] public GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
     
     [Header("Attributes")]
@@ -23,7 +25,10 @@ public class Turret : MonoBehaviour
     private Transform target;
     private float timeUntilFire;
 
-    
+    private void Awake()
+    {
+        main = this;
+    }
     private void Update()
     {
         if (target == null)
