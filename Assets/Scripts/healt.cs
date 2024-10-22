@@ -13,7 +13,7 @@ public class healt : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            EnemySpawner.onEnemyDestroy.Invoke();
+            EnemySpawner.main.EnemyDestroyed();
             Destroy(gameObject);
         }
     }

@@ -26,15 +26,12 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.up * bulletSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        other.gameObject.GetComponent<healt>().TakeDamage(bulletDamage);
-        Debug.Log("destruiu a bala");
-
-        Destroy(gameObject);
+        collider.gameObject.GetComponent<healt>().TakeDamage(bulletDamage);
+        Debug.Log("Destruiu a bala");
+            Destroy(gameObject);   
     }
-
-    
 
 
 }

@@ -7,6 +7,9 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+    #region singleton
+    static public EnemySpawner main;
+    #endregion
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
 
@@ -29,11 +32,13 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
+        main = this;
     }
 
-    private void EnemyDestroyed()
+    public void EnemyDestroyed()
     {
         enemiesAlive--;
+        onEnemyDestroy.RemoveListener(EnemyDestroyed);
     }
 
     private void Start()
@@ -42,6 +47,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
+        
         if (!isSpawning) return;
         timeSinceLastSpawn += Time.deltaTime;
 
@@ -83,4 +89,5 @@ public class EnemySpawner : MonoBehaviour
     {
         return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor)); 
     }
+
 }

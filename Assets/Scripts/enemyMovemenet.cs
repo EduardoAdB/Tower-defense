@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemyMovemenet : MonoBehaviour
 {
+    
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
 
@@ -13,6 +14,7 @@ public class enemyMovemenet : MonoBehaviour
     private Transform target;
     private int pathIndex = 0;
 
+    
     private void Start()
     {
         target = LevelManager.main.path[pathIndex];
@@ -44,4 +46,5 @@ public class enemyMovemenet : MonoBehaviour
         rb.velocity = direction * moveSpeed;
     }
 
+    
 }

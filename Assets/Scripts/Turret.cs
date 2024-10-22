@@ -43,6 +43,7 @@ public class Turret : MonoBehaviour
             timeUntilFire += Time.deltaTime;
             if(timeUntilFire >= bps)
             {
+                Debug.Log("disparou");
                 Shoot();
                 timeUntilFire = 0f;
             }
