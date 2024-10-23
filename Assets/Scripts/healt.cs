@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class healt : MonoBehaviour
 {
+    
     [Header("Attribute")]
     [SerializeField] private int hitPoints = 2;
     [SerializeField] private int currencyWorth = 50;
@@ -21,5 +22,5 @@ public class healt : MonoBehaviour
             Destroy(gameObject);
         }
 
-    }
+    }   
 }

@@ -78,6 +78,7 @@ public class EnemySpawner : MonoBehaviour
         timeSinceLastSpawn = 0f;
         currentWave++;
         StartCoroutine(StartWave());
+        
     }
 
     private void SpawnEnemy()
