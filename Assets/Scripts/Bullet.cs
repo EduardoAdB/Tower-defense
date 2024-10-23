@@ -40,6 +40,21 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }               
     }
+    private void Update()
+    {
+        BalaPerdida();
+    }
+    private void BalaPerdida()
+    {
+        // Converte a posição do objeto para coordenadas da viewport
+        Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
 
+        // Verifica se o objeto está fora da área visível da câmera
+        if (viewportPosition.x < 0 || viewportPosition.x > 1 ||
+            viewportPosition.y < 0 || viewportPosition.y > 1)
+        {
+            Destroy(gameObject); // Destrói o objeto
+        }
+    }
 
 }
