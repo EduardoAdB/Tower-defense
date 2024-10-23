@@ -28,9 +28,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        collider.gameObject.GetComponent<healt>().TakeDamage(bulletDamage);
-        Debug.Log("Destruiu a bala");
-            Destroy(gameObject);   
+        // Tenta obter o componente 'healt' do objeto colidido
+        healt healthComponent = collider.gameObject.GetComponent<healt>();
+
+        // Verifica se o objeto tem o componente 'healt'
+        if (healthComponent != null)
+        {
+            // Se tem, aplica o dano
+            healthComponent.TakeDamage(bulletDamage);
+            Debug.Log("Aplicou dano e destruiu a bala");
+            Destroy(gameObject);
+        }               
     }
 
 

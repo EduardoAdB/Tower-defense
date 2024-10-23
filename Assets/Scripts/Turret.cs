@@ -36,26 +36,41 @@ public class Turret : MonoBehaviour
             FindTarget();
             return;
         }
+
+        // Verifica se o alvo ainda está dentro do alcance
+        if (!CheckTargetIsInRange())
+        {
+            // Se o alvo saiu do alcance, para de atirar e redefine o alvo
+            target = null;
+            return;
+        }
+
+        // Rotaciona a torreta para o alvo
         RotateTowardsTarget();
 
-        if (target != null)
+        // Atira no alvo, se o tempo de disparo for alcançado
+        timeUntilFire += Time.deltaTime;
+        if (timeUntilFire >= bps) // Dispara quando o tempo for maior que o intervalo definido
         {
-            timeUntilFire += Time.deltaTime;
-            if(timeUntilFire >= bps)
-            {
-                Debug.Log("disparou");
-                Shoot();
-                timeUntilFire = 0f;
-            }
+            Debug.Log("disparou");
+            Shoot();
+            timeUntilFire = 0f;
         }
-    
     }
 
     public void Shoot()
     {
-       GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-       Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-       bulletScript.SetTarget(target);        
+        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+
+        if (bulletScript != null)
+        {
+            bulletScript.SetTarget(target);
+        }
+        else
+        {
+            Debug.LogWarning("O prefab da bala não possui o script 'Bullet'.");
+        }
     }
     private void FindTarget()
     {
