@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3044355001747970473}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: "Torre r\xE1pida"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: -773535367
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 900652354, guid: e96043fe5fa0fda489440ace7d96fae8, type: 3}
+  m_Sprite: {fileID: -1132321466, guid: 0bcb8af122f7faa4386e51dfaf465990, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,8 +169,8 @@ MonoBehaviour:
     m_Bits: 64
   bulletPrefab: {fileID: 5223129265623784893, guid: eb328842cea9d904db9aa8f8793c0540, type: 3}
   firingPoint: {fileID: 8986009472678429596}
-  targetingRange: 4
-  bps: 0.5
+  targetingRange: 1.6
+  bps: 0.1
 --- !u!1 &5699291838890582654
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_SortingLayerID: -773535367
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1767301255, guid: e96043fe5fa0fda489440ace7d96fae8, type: 3}
+  m_Sprite: {fileID: -276379249, guid: 0bcb8af122f7faa4386e51dfaf465990, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

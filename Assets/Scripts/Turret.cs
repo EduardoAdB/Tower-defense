@@ -21,6 +21,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private float targetingRange = 5f;
     //[SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float bps = 1f; //bullet per second :D
+    [SerializeField] float rotationSpeed = 10.0f;
 
     private Transform target;
     private float timeUntilFire;
@@ -90,7 +91,7 @@ public class Turret : MonoBehaviour
     private void RotateTowardsTarget()
     {
         // Velocidade de rotação (ajustável)
-        float rotationSpeed = 2.0f;
+        
 
         // Direção para o alvo
         Vector3 directionToTarget = target.position - turretRotationPoint.position;

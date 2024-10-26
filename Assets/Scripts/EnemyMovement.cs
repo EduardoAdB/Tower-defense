@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMovemenet : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     
     [Header("References")]

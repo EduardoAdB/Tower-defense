@@ -36,7 +36,7 @@ public class TurretSlowMo : MonoBehaviour
             {
                 RaycastHit2D hit = hits[i];
 
-                enemyMovemenet em = hit.transform.GetComponent<enemyMovemenet>();
+                EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
                 em.UpdateSpeed(0.5f);
             
                 StartCoroutine(ResetEnemySpeed(em));
@@ -44,7 +44,7 @@ public class TurretSlowMo : MonoBehaviour
         }
     }
 
-    private IEnumerator ResetEnemySpeed(enemyMovemenet em)
+    private IEnumerator ResetEnemySpeed(EnemyMovement em)
     {
         yield return new WaitForSeconds(freezeTime);
 
