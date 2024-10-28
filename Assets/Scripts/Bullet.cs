@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // Tenta obter o componente 'healt' do objeto colidido
-        healt healthComponent = collider.gameObject.GetComponent<healt>();
+        EnemyMovement healthComponent = collider.gameObject.GetComponent<EnemyMovement>();
 
         // Verifica se o objeto tem o componente 'healt'
         if (healthComponent != null)

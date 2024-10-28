@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class FastEnemy : EnemyMovement
+public class TankEnemy : EnemyMovement
 {
     private void Update()
     {
@@ -14,8 +13,9 @@ public class FastEnemy : EnemyMovement
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)
         {
             habilidadeAtiva = true;
-            baseSpeed = moveSpeed * 2;
+            hitPoints = hitPoints * 4;
         }
 
     }
 }
+

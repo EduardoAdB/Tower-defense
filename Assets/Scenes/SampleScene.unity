@@ -5225,10 +5225,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: a06acaa25f4f48e4fab4b1ddf68d2a44, type: 3}
+  - {fileID: 3004411526460140811, guid: 3940bb0b8c1c48643a337991159770b8, type: 3}
+  - {fileID: 3004411526460140811, guid: 3940bb0b8c1c48643a337991159770b8, type: 3}
+  - {fileID: 3004411526460140811, guid: 3940bb0b8c1c48643a337991159770b8, type: 3}
+  - {fileID: 3004411526460140811, guid: c58c668eb069ec9448f27889aa2c2a37, type: 3}
+  - {fileID: 3004411526460140811, guid: c58c668eb069ec9448f27889aa2c2a37, type: 3}
+  - {fileID: 3004411526460140811, guid: c58c668eb069ec9448f27889aa2c2a37, type: 3}
+  - {fileID: 3004411526460140811, guid: 3e341e4d0a027e043986596c4c519862, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 0.5
   timeBeetwenWaves: 1
   difficultyScalingFactor: 0.75
+  enemiesPerSecondCap: 10
 --- !u!114 &1035593945
 MonoBehaviour:
   m_ObjectHideFlags: 0

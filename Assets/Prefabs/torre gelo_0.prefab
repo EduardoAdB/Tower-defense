@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   targetingRange: 4
   aps: 4
   freezeTime: 2

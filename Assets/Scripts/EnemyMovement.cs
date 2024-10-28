@@ -9,18 +9,27 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] public float moveSpeed = 2f;
+
+
+    [Header("LifeAttribute")]
+    [SerializeField] public int hitPoints = 2;
+    [SerializeField] private int currencyWorth = 50;
+
+    private bool isDestroyed = false;
+    public int metadeDaVida;
+    public bool habilidadeAtiva = false;
 
     private Transform target;
     private int pathIndex = 0;
 
-    private float baseSpeed;
+    public float baseSpeed;
     
     private void Start()
     {
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
-
+        metadeDaVida = hitPoints / 2;
     }
     private void Update()
     {
@@ -56,5 +65,23 @@ public class EnemyMovement : MonoBehaviour
     public void ResetSpeed()
     {
         moveSpeed = baseSpeed;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        hitPoints -= dmg;
+
+        if (hitPoints <= 0 && !isDestroyed)
+        {
+            EnemySpawner.main.EnemyDestroyed();
+            LevelManager.main.IncreaseCurrency(currencyWorth);
+            isDestroyed = true;
+            Destroy(gameObject);
+        }
+
+    }
+    public virtual void MeiaVida()
+    {
+
     }
 }
