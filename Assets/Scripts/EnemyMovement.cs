@@ -50,6 +50,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
+                EnemySpawner.main.enemiesAlive--;
                 //fazer um metodo que tira vida da torre
                 return;
             }

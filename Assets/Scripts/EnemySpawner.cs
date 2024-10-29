@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     private int currentWave = 1;
     private float timeSinceLastSpawn;
 
-    private int enemiesAlive;
+    public int enemiesAlive;
     private int enemiesLeftToSpawn;
     private float eps;//inimigos por segundo
     private bool isSpawning = false;
