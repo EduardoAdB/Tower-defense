@@ -26,7 +26,7 @@ public class FastEnemy : EnemyMovement
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)
         {
             habilidadeAtiva = true; // Ativa a habilidade ao atingir metade da vida
-            baseSpeed = 4;          // Aumenta a velocidade base para 4
+            baseSpeed = 6;          // Aumenta a velocidade base para 6
         }
     }
 }

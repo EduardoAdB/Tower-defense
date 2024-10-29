@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.8036814, b: 1, a: 1}
+  m_Sprite: {fileID: 1339598250, guid: 919ca6a3a0b650146bd931869961e182, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -144822574957321347}
   moveSpeed: 2
-  hitPoints: 6
+  hitPoints: 10
   currencyWorth: 50
   metadeDaVida: 0
   habilidadeAtiva: 0
