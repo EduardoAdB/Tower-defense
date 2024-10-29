@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEnemy : EnemyMovement
+public class FireEnemy : EnemyMovement
 {
     private void Update()
     {
@@ -15,11 +15,13 @@ public class BossEnemy : EnemyMovement
     }
     public override void MeiaVida()
     {
-        if (hitPoints == metadeDaVida && habilidadeAtiva==false)
+        if (hitPoints == metadeDaVida && habilidadeAtiva == false)
         {
             habilidadeAtiva = true;
-            
+            hitPoints = hitPoints * 2;
+            baseSpeed = 0.5f;  
         }
 
     }
+
 }

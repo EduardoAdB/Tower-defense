@@ -8,13 +8,18 @@ public class FastEnemy : EnemyMovement
     private void Update()
     {
         MeiaVida();
+        Updt();
+    }
+    private void FixedUpdate()
+    {
+        FxdUpdate();
     }
     public override void MeiaVida()
     {
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)
         {
             habilidadeAtiva = true;
-            baseSpeed = moveSpeed * 2;
+            baseSpeed = 4;
         }
 
     }

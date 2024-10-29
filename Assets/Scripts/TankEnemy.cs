@@ -7,6 +7,11 @@ public class TankEnemy : EnemyMovement
     private void Update()
     {
         MeiaVida();
+        Updt();
+    }
+    private void FixedUpdate()
+    {
+        FxdUpdate();
     }
     public override void MeiaVida()
     {

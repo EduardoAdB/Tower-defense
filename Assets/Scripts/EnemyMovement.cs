@@ -33,14 +33,24 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Update()
     {
+        Updt();
+    }
+
+    private void FixedUpdate()
+    {
+        FxdUpdate();   
+    }
+    public void Updt()
+    {
         if (Vector2.Distance(target.position, transform.position) <= 0.1f)
         {
 
             pathIndex++;
-            if (pathIndex == LevelManager.main.path.Length) 
+            if (pathIndex == LevelManager.main.path.Length)
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
+                //fazer um metodo que tira vida da torre
                 return;
             }
             else
@@ -49,8 +59,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-
-    private void FixedUpdate()
+    public void FxdUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
 

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3797865677735649182}
   - component: {fileID: -144822574957321347}
   - component: {fileID: 4902743768633030102}
-  - component: {fileID: 3932991152712420271}
-  m_Layer: 6
-  m_Name: Boss Enemy
+  - component: {fileID: 3284011196445929181}
+  m_Layer: 8
+  m_Name: Fire Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.49527264, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.59006304, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3932991152712420271
+--- !u!114 &3284011196445929181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,13 +158,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3004411526460140811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1372a73a81214a84e80148ced9dc1713, type: 3}
+  m_Script: {fileID: 11500000, guid: fe66f5abbb00d0447a1727ae2f6b13c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: -144822574957321347}
-  moveSpeed: 0.5
-  hitPoints: 100
-  currencyWorth: 400
+  moveSpeed: 2
+  hitPoints: 6
+  currencyWorth: 100
   metadeDaVida: 0
   habilidadeAtiva: 0
   baseSpeed: 0

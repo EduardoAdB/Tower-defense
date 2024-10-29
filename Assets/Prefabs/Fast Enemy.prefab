@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -144822574957321347}
   moveSpeed: 2
-  hitPoints: 5
+  hitPoints: 6
   currencyWorth: 50
   metadeDaVida: 0
   habilidadeAtiva: 0

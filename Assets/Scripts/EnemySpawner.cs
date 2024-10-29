@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -69,6 +70,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator StartWave()
     {
+        enemiesAlive = 0;
         yield return new WaitForSeconds(timeBeetwenWaves);
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
@@ -97,5 +99,10 @@ public class EnemySpawner : MonoBehaviour
     private float EnemiesPerSecond()
     {
         return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap); 
+    }    
+
+    public void ForçeWave()
+    {
+        StartWave();
     }
 }
