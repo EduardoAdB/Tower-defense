@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Classe FireEnemy representa um inimigo que herda características e comportamento de EnemyMovement
-public class FireEnemy : EnemyMovement
+public class FireEnemy : EnemyMovement, IMeiaVida
 {
     // Atualiza o comportamento do inimigo a cada frame
     private void Update()
@@ -19,7 +19,7 @@ public class FireEnemy : EnemyMovement
     }
 
     // Sobrescreve o método MeiaVida para definir um comportamento único de "habilidade ativa" do FireEnemy
-    public override void MeiaVida()
+    public virtual void MeiaVida()
     {
         // Se os pontos de vida forem igual a metadeDaVida e a habilidade ainda não estiver ativa
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)

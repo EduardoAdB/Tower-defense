@@ -23,13 +23,16 @@ public class TurretSlowMo : MonoBehaviour
     {
         // Incrementa o tempo até o próximo disparo
         timeUntilFire += Time.deltaTime;
-
+       // Ataque();
         // Verifica se é hora de disparar com base no intervalo definido (aps)
         if (timeUntilFire >= aps)
         {
             Debug.Log("congelou");  // Mensagem para indicar o efeito de congelamento
             FreezeEnemies();        // Chama o método para congelar inimigos
+            //ataque.SetActive(true);
             timeUntilFire = 0f;     // Reseta o contador de tempo
+            //ataque.SetActive(false);
+
         }
     }
 
@@ -68,4 +71,13 @@ public class TurretSlowMo : MonoBehaviour
         Handles.color = Color.blue; // Define a cor do Gizmo
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange); // Desenha um círculo para mostrar o alcance
     }*/
+    //[SerializeField] GameObject ataque;
+    
+    //public void Ataque()
+    //{
+    //    ataque.transform.localScale = 
+    //}
+
+
+
 }

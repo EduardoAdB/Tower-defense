@@ -64,7 +64,6 @@ public class EnemyMovement : MonoBehaviour
                 EnemySpawner.onEnemyDestroy.Invoke();   // Notifica a destruição
                 Destroy(gameObject);                   // Destroi o GameObject
                 EnemySpawner.main.enemiesAlive--;      // Decrementa o contador de inimigos vivos
-                
                 return;
             }
             else
@@ -105,12 +104,13 @@ public class EnemyMovement : MonoBehaviour
             LevelManager.main.IncreaseCurrency(currencyWorth); // Aumenta a moeda do jogador
             isDestroyed = true;                                // Marca o inimigo como destruído
             Destroy(gameObject);                               // Destroi o GameObject
+            EnemySpawner.main.inimigosVivos--;
+            EnemySpawner.main.inimigosVivosT.text = "Inimigos Vivos: " + EnemySpawner.main.inimigosVivos.ToString();
         }
-    }
+    }    
+}
 
-    // Método virtual MeiaVida para ser sobrescrito em classes derivadas
-    public virtual void MeiaVida()
-    {
-        // Este método permite que inimigos específicos implementem um comportamento especial ao atingir metade da vida
-    }
+public interface IMeiaVida
+{
+    void MeiaVida();
 }

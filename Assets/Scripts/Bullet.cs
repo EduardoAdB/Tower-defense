@@ -42,6 +42,7 @@ public class Bullet : MonoBehaviour
             healthComponent.TakeDamage(bulletDamage); // Aplica o dano ao inimigo
             Debug.Log("Aplicou dano e destruiu a bala");
             Destroy(gameObject); // Destroi a bala após aplicar o dano
+            
         }
     }
 
@@ -61,6 +62,8 @@ public class Bullet : MonoBehaviour
             viewportPosition.y < 0 || viewportPosition.y > 1)
         {
             Destroy(gameObject);
+            
+
         }
     }
 }

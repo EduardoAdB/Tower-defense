@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 // Classe FastEnemy que herda de EnemyMovement
-public class FastEnemy : EnemyMovement
+public class FastEnemy : EnemyMovement, IMeiaVida
 {
     // Método chamado a cada frame
     private void Update()
@@ -20,7 +20,7 @@ public class FastEnemy : EnemyMovement
     }
 
     // Sobrescrita do método MeiaVida da classe base, adaptado para FastEnemy
-    public override void MeiaVida()
+    public virtual void MeiaVida()
     {
         // Verifica se os pontos de vida atingiram metade e se a habilidade ainda não está ativa
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)
@@ -29,4 +29,5 @@ public class FastEnemy : EnemyMovement
             baseSpeed = 6;          // Aumenta a velocidade base para 6
         }
     }
+    
 }

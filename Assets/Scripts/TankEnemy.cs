@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Classe TankEnemy que herda da classe EnemyMovement
-public class TankEnemy : EnemyMovement
+public class TankEnemy : EnemyMovement, IMeiaVida
 {
     // Método chamado a cada frame
     private void Update()
@@ -19,7 +19,7 @@ public class TankEnemy : EnemyMovement
     }
 
     // Sobrescrita do método MeiaVida da classe base, adaptado para o TankEnemy
-    public override void MeiaVida()
+    public virtual void MeiaVida()
     {
         // Verifica se os pontos de vida atingiram metade e se a habilidade ainda não está ativa
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)

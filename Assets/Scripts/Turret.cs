@@ -29,6 +29,8 @@ public class Turret : MonoBehaviour
     private Transform target;     // Alvo atual
     private float timeUntilFire;  // Contador para controlar o tempo até o próximo disparo
 
+    private List<Transform> enemiesInRange = new List<Transform>(); // Lista para armazenar inimigos dentro do alcance
+
     private void Awake()
     {
         // Define a instância singleton
@@ -37,17 +39,19 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
+        // Atualiza a lista de inimigos dentro do alcance
+        UpdateEnemiesInRange();
+
         // Se não houver alvo, busca um novo alvo
         if (target == null)
         {
-            FindTarget();
             return;
         }
 
         // Verifica se o alvo ainda está no alcance da torreta
         if (!CheckTargetIsInRange())
         {
-            // Se o alvo saiu do alcance, para de atirar e redefine o alvo
+            // Se o alvo saiu do alcance, redefine o alvo
             target = null;
             return;
         }
@@ -59,9 +63,46 @@ public class Turret : MonoBehaviour
         timeUntilFire += Time.deltaTime;
         if (timeUntilFire >= bps)
         {
-            Debug.Log("disparou");
+            Debug.Log("Disparou!");
             Shoot();           // Dispara no alvo
             timeUntilFire = 0f; // Reseta o contador de tempo para o próximo disparo
+        }
+    }
+
+    // Método para atualizar a lista de inimigos dentro do alcance da torreta
+    private void UpdateEnemiesInRange()
+    {
+        // Cria uma área circular para detectar inimigos no alcance
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+
+        // Para cada inimigo detectado, se ele não estiver na lista, adiciona-o
+        foreach (var hit in hits)
+        {
+            if (!enemiesInRange.Contains(hit.transform))
+            {
+                enemiesInRange.Add(hit.transform);
+            }
+        }
+
+        // Verifica se algum inimigo saiu do alcance ou morreu, e remove da lista
+        for (int i = enemiesInRange.Count - 1; i >= 0; i--)
+        {
+            // Se o inimigo saiu do alcance ou foi destruído, remove da lista
+            if (enemiesInRange[i] == null || Vector2.Distance(enemiesInRange[i].position, transform.position) > targetingRange)
+            {
+                enemiesInRange.RemoveAt(i);
+            }
+        }
+
+        // Se não houver mais inimigos na lista, define target como null
+        if (enemiesInRange.Count == 0)
+        {
+            target = null;
+        }
+        else
+        {
+            // Se houver inimigos, define target como o próximo inimigo na lista
+            target = GetLowestHealthEnemy();
         }
     }
 
@@ -82,20 +123,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    // Método para encontrar o alvo mais próximo dentro do alcance
-    private void FindTarget()
-    {
-        // Cria uma área circular para detectar inimigos no alcance
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
-
-        // Se houver inimigos detectados, define o primeiro inimigo como alvo
-        if (hits.Length > 0)
-        {
-            target = hits[0].transform;
-        }
-    }
-
-    // Verifica se o alvo atual ainda está dentro do alcance
+    // Método para verificar se o alvo está dentro do alcance
     private bool CheckTargetIsInRange()
     {
         return Vector2.Distance(target.position, transform.position) <= targetingRange;
@@ -117,10 +145,22 @@ public class Turret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.Euler(0, 0, currentAngle);
     }
 
-    // Método para desenhar o alcance de ataque da torreta no editor
-    /*private void OnDrawGizmosSelected()
+    // Método para retornar o inimigo com a menor vida da lista
+    private Transform GetLowestHealthEnemy()
     {
-        Handles.color = Color.blue;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange); // Exibe o alcance da torreta
-    }*/
+        Transform lowestHealthEnemy = enemiesInRange[0];
+        float lowestHealth = lowestHealthEnemy.GetComponent<EnemyMovement>().hitPoints; // Supondo que o inimigo tenha um script 'Enemy' com hitPoints
+
+        foreach (Transform enemy in enemiesInRange)
+        {
+            float currentHealth = enemy.GetComponent<EnemyMovement>().hitPoints;
+            if (currentHealth < lowestHealth)
+            {
+                lowestHealthEnemy = enemy;
+                lowestHealth = currentHealth;
+            }
+        }
+
+        return lowestHealthEnemy;
+    }
 }

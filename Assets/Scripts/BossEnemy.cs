@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Classe BossEnemy que herda da classe EnemyMovement
-public class BossEnemy : EnemyMovement
+public class BossEnemy : EnemyMovement, IMeiaVida
 {
     // Método chamado a cada frame
     private void Update()
@@ -19,7 +19,7 @@ public class BossEnemy : EnemyMovement
     }
 
     // Sobrescrita do método MeiaVida da classe base
-    public override void MeiaVida()
+    public virtual void MeiaVida()
     {
         // Condicional para verificar se os pontos de vida atingiram metade e se a habilidade ainda não está ativa
         if (hitPoints == metadeDaVida && habilidadeAtiva == false)

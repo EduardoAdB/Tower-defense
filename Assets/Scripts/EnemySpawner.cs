@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -37,6 +38,9 @@ public class EnemySpawner : MonoBehaviour
     private float eps;                           // Taxa de inimigos por segundo, ajustada para a dificuldade
     private bool isSpawning = false;             // Controle para verificar se uma onda está em andamento
 
+    public int inimigosVivos;
+    public TextMeshProUGUI inimigosVivosT;
+
     // Método Awake, define o singleton e adiciona o listener para destruição de inimigos
     private void Awake()
     {
@@ -55,6 +59,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartWave());
+        inimigosVivosT.text = "Inimigos Vivos: " + inimigosVivos.ToString();
     }
 
     // Método Update gerencia a geração de inimigos enquanto uma onda está ativa
@@ -64,6 +69,7 @@ public class EnemySpawner : MonoBehaviour
 
         timeSinceLastSpawn += Time.deltaTime; // Atualiza o tempo desde o último spawn
 
+       
         // Condição para gerar um novo inimigo baseado no tempo e nos inimigos restantes
         if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
@@ -105,6 +111,8 @@ public class EnemySpawner : MonoBehaviour
         int index = Random.Range(0, enemyPrefabs.Length);                  // Seleciona um índice aleatório para o prefab
         GameObject prefabToSpawn = enemyPrefabs[index];                    // Escolhe o prefab correspondente
         Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity); // Instancia o inimigo
+        inimigosVivos++;
+        inimigosVivosT.text = "Inimigos Vivos: " + inimigosVivos.ToString();
     }
 
     // Método para calcular o número de inimigos na onda atual, com escalonamento de dificuldade
