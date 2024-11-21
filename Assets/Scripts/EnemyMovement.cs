@@ -64,6 +64,7 @@ public class EnemyMovement : MonoBehaviour
                 EnemySpawner.onEnemyDestroy.Invoke();   // Notifica a destruição
                 Destroy(gameObject);                   // Destroi o GameObject
                 EnemySpawner.main.enemiesAlive--;      // Decrementa o contador de inimigos vivos
+                EnemySpawner.main.inimigosVivos--;
                 return;
             }
             else
