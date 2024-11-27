@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -8,6 +10,8 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 {
     private string gameId = "5735164"; 
     private bool testMode = true;
+    [SerializeField] GameObject adButton;
+    private float count;
 
 
     private void Start()
@@ -21,7 +25,8 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     public void MostrarAD()
     {       
         Advertisement.Show("Rewarded_Android", this);
-        Time.timeScale = 0f;
+        Debug.Log("mostrou ad");
+        
         //pausar o jogo
     }
 
@@ -30,11 +35,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     }
 
-
-
-
-
-
+    
 
     public void OnInitializationComplete()
     {
@@ -64,8 +65,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
         Time.timeScale = 1f;
-
-
+        LevelManager.main.IncreaseCurrency(500);
     }
 }
 
