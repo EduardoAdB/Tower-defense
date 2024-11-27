@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
     // Variáveis de controle do estado das ondas e inimigos
-    private int currentWave = 1;                 // Número da onda atual
+    public int currentWave = 1;                 // Número da onda atual
     private float timeSinceLastSpawn;            // Tempo desde o último inimigo gerado
 
     public int enemiesAlive;                     // Contador de inimigos vivos na onda atual
@@ -40,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
 
     public int inimigosVivos;
     public TextMeshProUGUI inimigosVivosT;
+
+    private int wave = 0;
 
     // Método Awake, define o singleton e adiciona o listener para destruição de inimigos
     private void Awake()
@@ -93,6 +95,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = true;                          // Marca que a onda está em andamento
         enemiesLeftToSpawn = EnemiesPerWave();      // Define o número de inimigos para gerar nesta onda
         eps = EnemiesPerSecond();                   // Ajusta a taxa de geração de inimigos
+        wave++;
     }
 
     // Método EndWave encerra a onda e inicia a próxima
@@ -101,7 +104,10 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;          // Marca que a geração de inimigos foi interrompida
         timeSinceLastSpawn = 0f;     // Reinicia o contador de tempo para a próxima onda
         currentWave++;               // Incrementa o número da onda atual
-        StartWave(); // Inicia a próxima onda
+        AdManager.main.WaveAd();
+        
+        //StartWave(); // Inicia a próxima onda
+
     }
 
     // Método SpawnEnemy seleciona aleatoriamente um prefab e o instancia no ponto inicial

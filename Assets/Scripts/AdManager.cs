@@ -17,6 +17,10 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     [SerializeField] GameObject adButton;
     private float count;
     public bool adWave = false;
+    private void Awake()
+    {
+        main = this;
+    }
 
     private void Start()
     {
@@ -36,7 +40,8 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     public void WaveAd()
     {
-        Advertisement.Show
+        Advertisement.Show("Interstitial_Android", this);
+        Debug.Log("ad");
     }
 
     
