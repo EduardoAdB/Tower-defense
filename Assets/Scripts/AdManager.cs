@@ -8,11 +8,15 @@ using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsShowListener
 {
+    #region singleton
+    public static AdManager main;
+    #endregion
+
     private string gameId = "5735164"; 
     private bool testMode = true;
     [SerializeField] GameObject adButton;
     private float count;
-
+    public bool adWave = false;
 
     private void Start()
     {
@@ -32,7 +36,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     public void WaveAd()
     {
-
+        Advertisement.Show
     }
 
     
@@ -64,8 +68,19 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        Time.timeScale = 1f;
-        LevelManager.main.IncreaseCurrency(500);
+        if (placementId == "Rewarded_Android")
+        {
+            Time.timeScale = 1f;
+            LevelManager.main.IncreaseCurrency(500);
+        }
+
+       if (placementId == "Interstitial_Android")
+        {
+            Time.timeScale = 1f;
+            EnemySpawner.main.StartWave();
+        } 
+
+        
     }
 }
 

@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
     // Método Start inicia a primeira onda de inimigos
     private void Start()
     {
-        StartCoroutine(StartWave());
+        StartWave();
         inimigosVivosT.text = "Inimigos Vivos: " + inimigosVivos.ToString();
     }
 
@@ -87,10 +87,9 @@ public class EnemySpawner : MonoBehaviour
     }
 
     // Método que inicia uma nova onda de inimigos após o intervalo especificado
-    private IEnumerator StartWave()
+    public void StartWave()
     {
         enemiesAlive = 0;                           // Reinicia o contador de inimigos vivos
-        yield return new WaitForSeconds(timeBeetwenWaves); // Aguarda o tempo entre ondas
         isSpawning = true;                          // Marca que a onda está em andamento
         enemiesLeftToSpawn = EnemiesPerWave();      // Define o número de inimigos para gerar nesta onda
         eps = EnemiesPerSecond();                   // Ajusta a taxa de geração de inimigos
@@ -102,7 +101,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;          // Marca que a geração de inimigos foi interrompida
         timeSinceLastSpawn = 0f;     // Reinicia o contador de tempo para a próxima onda
         currentWave++;               // Incrementa o número da onda atual
-        StartCoroutine(StartWave()); // Inicia a próxima onda
+        StartWave(); // Inicia a próxima onda
     }
 
     // Método SpawnEnemy seleciona aleatoriamente um prefab e o instancia no ponto inicial
