@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Classe LevelManager: gerencia o nível, incluindo o caminho dos inimigos, o ponto de partida e a moeda do jogador
 public class LevelManager : MonoBehaviour
@@ -22,6 +25,10 @@ public class LevelManager : MonoBehaviour
         currency = 100; // Define a moeda inicial do jogador
     }
 
+    private void Update()
+    {
+        EndGame();
+    }
     // Método para aumentar a quantidade de moeda do jogador
     public void IncreaseCurrency(int amount)
     {
@@ -43,5 +50,25 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Você não tem dinheiro"); // Loga se a transação falhar
             return false; // Transação falhou
         }
+    }
+    public int torreVida = 10;
+    [SerializeField] public GameObject endGameMenu;
+    [SerializeField] TextMeshProUGUI vidaText;
+    public void EndGame()
+    {
+        vidaText.text = ("vida da torre: " + torreVida + "/500");
+
+        if (torreVida <= 0)
+        {
+            Time.timeScale = 0f;
+            endGameMenu.SetActive(true);
+            MenuManager.main.mapa.SetActive(false);
+            MenuManager.main.menuGame.SetActive(false);
+        }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }

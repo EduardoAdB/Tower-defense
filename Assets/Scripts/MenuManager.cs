@@ -9,11 +9,11 @@ public class MenuManager : MonoBehaviour
     static public MenuManager main;                
     #endregion
     [SerializeField]
-    GameObject menuGame;
+    public GameObject menuGame;
     [SerializeField]
-    GameObject menuStart;
+    public GameObject menuStart;
     [SerializeField]
-    GameObject mapa;
+    public GameObject mapa;
 
     private void Start()
     {

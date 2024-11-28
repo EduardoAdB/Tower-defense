@@ -5,6 +5,9 @@ using UnityEngine;
 // Classe EnemyMovement, responsável pelo comportamento de movimento e vida dos inimigos
 public class EnemyMovement : MonoBehaviour
 {
+    #region singleton
+    static public EnemyMovement main;
+    #endregion
     // Referências ao Rigidbody2D para controlar o movimento do inimigo
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
@@ -30,6 +33,9 @@ public class EnemyMovement : MonoBehaviour
     // Guarda a velocidade inicial para que possa ser restaurada posteriormente
     public float baseSpeed;
 
+    
+
+
     // Método Start é chamado no início da execução
     private void Start()
     {
@@ -42,6 +48,7 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         Updt(); // Chama o método Updt, que lida com o avanço no caminho
+        
     }
 
     // Método FixedUpdate chamado em intervalos fixos, ideal para física
@@ -49,6 +56,9 @@ public class EnemyMovement : MonoBehaviour
     {
         FxdUpdate(); // Chama FxdUpdate para realizar o movimento do inimigo
     }
+
+    
+
 
     // Método Updt para controlar o movimento entre pontos do caminho
     public void Updt()
@@ -65,6 +75,9 @@ public class EnemyMovement : MonoBehaviour
                 Destroy(gameObject);                   // Destroi o GameObject
                 EnemySpawner.main.enemiesAlive--;      // Decrementa o contador de inimigos vivos
                 EnemySpawner.main.inimigosVivos--;
+                LevelManager.main.torreVida -= hitPoints;
+                
+                EnemySpawner.main.inimigosVivosT.text = ("Inimigos vivos: "+ EnemySpawner.main.inimigosVivos.ToString());
                 return;
             }
             else

@@ -21,6 +21,8 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     float timer = 0;
     bool isShowing = true;
 
+    bool prop;
+
 
     private void Awake()
     {
@@ -41,11 +43,27 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         
         //pausar o jogo
     }
+    
+    public void ReviverAd()
+    {
+        Advertisement.Show("Revive_Ad", this);        
+    }
 
+        
     public void WaveAd()
     {
-        Advertisement.Show("Interstitial_Android", this);
-        Debug.Log("ad");
+        if (prop)
+        {
+            Advertisement.Show("Interstitial_Android", this);
+            Debug.Log("ad");
+            prop = false;
+        }
+        else if (!prop )
+        {
+            Advertisement.Show("Unskip_AD", this);
+            prop = true;
+        }
+        
     }
 
     private void Update()
@@ -114,7 +132,14 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
             Time.timeScale = 1f;
             EnemySpawner.main.StartWave();
         } 
-
+       if (placementId == "Revive_Ad")
+        {
+            Time.timeScale = 1f;
+            LevelManager.main.torreVida = 500;
+            LevelManager.main.endGameMenu.SetActive(false);
+            MenuManager.main.mapa.SetActive(true);
+            MenuManager.main.menuGame.SetActive(true);
+        }
         
     }
 }

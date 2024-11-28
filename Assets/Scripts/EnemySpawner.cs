@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
     // Método chamado ao destruir um inimigo, decrementa o contador de inimigos vivos
     public void EnemyDestroyed()
     {
-        enemiesAlive--;
+        //enemiesAlive--;
         onEnemyDestroy.RemoveListener(EnemyDestroyed); // Remove o listener após a destruição do inimigo
     }
 
