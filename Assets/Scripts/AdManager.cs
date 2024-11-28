@@ -17,6 +17,11 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     [SerializeField] GameObject adButton;
     private float count;
     public bool adWave = false;
+
+    float timer = 0;
+    bool isShowing = true;
+
+
     private void Awake()
     {
         main = this;
@@ -25,8 +30,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     private void Start()
     {
         Advertisement.Initialize(gameId, testMode);
-        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-        Advertisement.Banner.Show("Rewarded_Android");
+        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);        
         Advertisement.Banner.Show("Banner_Android");
     }
     
@@ -44,7 +48,33 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         Debug.Log("ad");
     }
 
-    
+    private void Update()
+    {
+        BannerAd();
+        
+
+    }
+
+    public void BannerAd()
+    {
+        timer += Time.deltaTime;
+        int segundos = (int)timer;
+        Debug.Log("Segundos");
+
+        if (segundos == 10 && isShowing)
+        {
+            Advertisement.Banner.Hide();
+            timer = 0;
+            isShowing = false;
+        }
+        if (segundos == 5 && !isShowing)
+        {
+            Advertisement.Banner.Show("Banner_Android");
+            Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+            timer = 0;
+            isShowing = true;
+        }
+    }
 
     public void OnInitializationComplete()
     {
